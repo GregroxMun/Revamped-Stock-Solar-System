@@ -1,0 +1,259 @@
+@Kopernicus:FOR[AlternisKerbol]
+{
+    @Body[Moho]
+    {
+		name = Moho
+		@Template
+		{
+			@name = Duna
+			removePQSMods = VertexHeightMap,VertexSimplexHeightAbsolute,VertexHeightNoiseVertHeightCurve2,VertexHeightNoiseVertHeightCurve2,VertexHeightNoiseVertHeightCurve2,AltitudeAlpha,PQSLandControl,VertexColorMapBlend,VertexSimplexNoiseColor,AerialPerspectiveMaterial,MapDecal
+		}
+		@Properties
+		{
+			description = Moho is the closest planet to the Sun. It is unlikely to have an atmosphere, as any atmosphere would have long since been stripped away by the powerful solar wind. However, The planet's proximity to The Sun may give it active volcanoes to replenish an atmosphere. Some minds at the Kerbal Astronomical Society have thought up ways to start active volcanism in the event that it does not already exist there. Such research has led to exciting new aerospace breakthroughs.
+			radius = 250000
+			geeASL = 0.275000005960464
+			rotates = True
+			rotationPeriod = 1210000
+			tidallyLocked = False
+			initialRotation = 190
+			inverseRotThresholdAltitude = 100000
+		}
+		Debug
+		{
+			exportMesh = true
+			update = true
+		}
+		@Orbit
+        {
+            @referenceBody = Sun
+            semiMajorAxis = 4075040399
+			inclination	= 0.2502
+			eccentricity = 0.2
+			longitudeOfAscendingNode = 70
+			argumentOfPeriapsis	= 15
+			meanAnomalyAtEpoch = 3.1416
+			epoch = 0
+			color = 0.4705882,0.3507843,0.2305882,0.5490196
+        }
+		Atmosphere
+		{
+			// General atmosphere settings
+			enabled = true
+			oxygen = false
+			maxAltitude = 30000.0
+			// Constants
+			adiabaticIndex = 1.45
+			atmosphereMolarMass = 0.021
+			// Atmosphere Pressure
+			pressureSeaLevel = 0.04503
+			pressureCurve
+			{
+				key = 0 0.0405300 0 -7.70036E-07
+				key = 1000 0.0397608 -7.68741E-07 -7.68741E-07
+				key = 3000 0.0382208 -7.72609E-07 -7.72609E-07
+				key = 6000 0.0358792 -7.90341E-07 -7.90341E-07 
+				key = 9000 0.0334723 -8.14364E-07 -8.14364E-07
+				key = 12000 0.0309996 -8.31518E-07 -8.31518E-07
+				key = 15000 0.0285087 -8.23117E-07 -8.23117E-07
+				key = 20000 0.0245617 -7.43927E-07 -7.43927E-07
+ 				key = 25000 0.0211310 -6.28322E-07 -6.28322E-07
+				key = 30000 0 0 0
+			}
+			// Atmosphere Temperature
+			temperatureSeaLevel = 442
+			temperatureCurve
+			{
+				key = 0 257 0 -0.0075
+				key = 15000 180 0 0
+				key = 20000 180 0 0
+				key = 30000 200 0.005 0
+			}
+			temperatureSunMultCurve
+			{
+				key = 0 1 0 0
+				key = 20000 0.5 0 0
+				key = 30000 0.5 0 0
+			}
+			temperatureLatitudeBiasCurve
+			{
+				key = 0 13 0 0
+				key = 38 0 -0.7 -0.7
+				key = 65 -30 -1.65 -1.65
+				key = 90 -107 -5.2 0
+			}
+			temperatureLatitudeSunMultCurve
+			{
+				key = 0 410 0 0
+				key = 60 330 -3.2 -3.2
+				key = 90 100 -17 0
+			}
+			temperatureAxialSunBiasCurve
+			{
+				key = 0 -12.941 0 -0.84293
+				key = 75 -50 0 0
+				key = 165 0 0.87266 0.87266
+				key = 255 50 0 0
+				key = 345 0 -0.87266 -0.87266
+				key = 360 -12.941 -0.84293 0
+			}
+			temperatureAxialSunMultCurve
+			{
+				key = 0 0 0 0.003
+				key = 30 0.1 0.0045 0.0045
+				key = 60 0.3 0.011 0.011
+				key = 90 1 0.03 0
+			}
+			temperatureEccentricityBiasCurve
+			{
+				key = 0 30 0 -60
+				key = 1 -30 -60 0
+			}
+		}
+		@ScaledVersion
+		{
+			type = Atmospheric
+			fadeStart = 95000
+			fadeEnd = 100000
+			sphericalModel = False
+			deferMesh = False
+			Material
+			{
+				color = 1,1,1,1
+				specular = 0,0,0,1
+				shininess = 0.03
+				rimPower = 1.56
+				rimBlend = 0.1
+				rimColorRamp = RevampedStockSystem/Textures/Grey-Moho_Color_Ramp
+				texture = RevampedStockSystem/PluginData/Moho_Color.png
+				normals = RevampedStockSystem/PluginData/Moho_Normal.png
+			}
+		}
+		@PQS
+		{
+			Mods
+			{
+				VertexSimplexNoiseColor
+				{
+					colorStart = 0.1620828,0.07781319,0.08988756,1
+					blend = 1
+					colorEnd = 0,0,0,1
+					frequency = 2
+					octaves = 12
+					persistence = 0.5
+					seed = 346434
+					order = 200
+					enabled = True
+				}
+				HeightColorMap
+				{
+					blend = 0.75
+					order = 201
+					enabled = True
+					LandClasses
+					{
+						Class
+						{
+							name = AbyPl
+							color = 0.0505618,0.06179776,0.07279775,1
+							altitudeStart = 0
+							altitudeEnd = 0.400000005960464
+							lerpToNext = True
+							delete = False
+						}
+						Class
+						{
+							name = Beach
+							color = 0.33,0.25,0.22,1
+							altitudeStart = 0.400000005960464
+							altitudeEnd = 1
+							lerpToNext = False
+							delete = False
+						}
+					}
+				}
+				AltitudeAlpha
+				{
+					atmosphereDepth = 7000
+					invert = False
+					order = 999999999
+					enabled = True
+				}
+				AerialPerspectiveMaterial
+				{
+					atmosphereDepth = 150000
+					cameraAlt = 0
+					cameraAtmosAlt = 0
+					DEBUG_SetEveryFrame = True
+					globalDensity = -1E-05
+					heightDensAtViewer = 0
+					heightFalloff = 6.75
+					order = 100
+					enabled = True
+				}
+				VertexHeightMap
+				{
+					map = RevampedStockSystem/PluginData/Moho_Height.png
+					offset = 0
+					deformity = 5700
+					scaleDeformityByRadius = False
+					order = 20
+					enabled = True
+				}
+				VertexSimplexHeight
+				{
+					deformity = 500
+					frequency = 6
+					octaves = 12
+					persistence = 0.5
+					seed = 456574
+					order = 21
+					enabled = True
+				}
+				FlattenOcean
+				{
+					oceanRadius = 1
+					order = 22
+					enabled = True
+				}
+				VertexHeightNoiseVertHeightCurve2
+				{
+					deformity = 2500
+					ridgedAddFrequency = 32
+					ridgedAddLacunarity = 2
+					ridgedAddOctaves = 4
+					ridgedAddSeed = 1212
+					ridgedMode = Low
+					ridgedSubFrequency = 32
+					ridgedSubLacunarity = 2
+					ridgedSubOctaves = 4
+					ridgedSubSeed = 453123
+					simplexFrequency = 24
+					simplexHeightEnd = 5500
+					simplexHeightStart = 10
+					simplexOctaves = 4
+					simplexPersistence = 0.5
+					simplexSeed = 453452378
+					order = 23
+					enabled = True
+					simplexCurve
+					{
+						key = 0 0 0 0
+						key = 0.6311918 0.4490898 1.432598 1.432598
+						key = 1 1 0 0
+					}
+				}
+				VertexSimplexHeightAbsolute
+				{
+					deformity = 200
+					frequency = 18
+					octaves = 7
+					persistence = 0.5
+					seed = 435345
+					order = 30
+					enabled = True
+				}
+			}
+		}
+    }
+}
